@@ -23,6 +23,7 @@ We need the following prerequisites:
 Little folder description:
 
 /ansible => all about ansible deployment
+
 /terraform => all about terraform deployment
 
 you have a symlink from /terraform/ansible to /ansible
@@ -57,14 +58,14 @@ This server act as dashboard service.
     
 ## How it deploy?
 
-    1. Terraform deploy the router, the network
-    1. Terraform deploy the FRONT server with it's public @IP
-    1. Terraform deploy the Guacamole, thingsboard, node-red and NoSQL servers
-    1. Terraform deploy ansible package and ssh keys to the FRONT server
-    1. ansible install all needs on FRONT server
-    1. ansible install all needs on Guacamole server
-    1. ansible install all needs on node-red, thingsboard and NoSQL servers
-    1. ansible install let's encrypt, apache2 and reverse conf. We need servers up and running to respond let's encrypt request...
+    * Terraform deploy the router, the network
+    * Terraform deploy the FRONT server with it's public @IP
+    * Terraform deploy the Guacamole, thingsboard, node-red and NoSQL servers
+    * Terraform deploy ansible package and ssh keys to the FRONT server
+    * ansible install all needs on FRONT server
+    * ansible install all needs on Guacamole server
+    * ansible install all needs on node-red, thingsboard and NoSQL servers
+    * ansible install let's encrypt, apache2 and reverse conf. We need servers up and running to respond let's encrypt request...
 
 
 # Licence
