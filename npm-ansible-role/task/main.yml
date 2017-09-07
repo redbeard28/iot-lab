@@ -5,4 +5,4 @@
     state: present
     update_cache: yes
   when: ansible_distribution == "Ubuntu"
-  tgs: npm-install
+  tags: npm-install

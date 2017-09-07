@@ -6,4 +6,4 @@
       - mosquitto-clients
     state: present
   when: ansible_distribution == "Ubuntu"
-  tgs: mosquitto-install
+  tags: mosquitto-install
