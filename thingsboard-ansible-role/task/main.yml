@@ -1,0 +1,8 @@
+---
+- name: Install package for Ubuntu
+  apt:
+    name: npm
+    state: present
+    update_cache: yes
+  when: ansible_distribution == "Ubuntu"
+  tgs: npm-install

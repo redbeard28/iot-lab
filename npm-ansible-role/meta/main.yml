@@ -1,0 +1,15 @@
+---
+galaxy_info:
+  author: Jeremie CUADRADO <redbeard28>
+  description: ansible role npm install
+  company: REDBEARD-CONSULTING
+  license: CC-BY-NC-SA
+  min_ansible_version: 1.2
+  platforms:
+    - name: Ubuntu
+      versions:
+        - zesty
+  categories:
+    - iot
+    - system
+  dependencies: []

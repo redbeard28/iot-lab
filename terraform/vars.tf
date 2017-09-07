@@ -22,7 +22,11 @@ variable "thingsboard-image-flavor" {
   default = "XSmall"
 }
 
-variable "nodered-image-flavor-image-flavor" {
+variable "nodered-image-flavor" {
+  default = "Medium"
+}
+
+variable "guacamole-image-flavor" {
   default = "Medium"
 }
 
@@ -30,6 +34,7 @@ variable "openstack_keypair" {
     description = "The keypair to be used."
     default  = "demo_key"
 }
+
 
 #######################################################
 #### Reverse Proxy nodes ####

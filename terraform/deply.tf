@@ -39,10 +39,26 @@ resource "openstack_networking_router_interface_v2" "terraform" {
   subnet_id = "${openstack_networking_subnet_v2.terraform.id}"
 }
 
-resource "openstack_compute_floatingip_v2" "terraform" {
+resource "openstack_networking_floatingip_v2" "terraform" {
   pool       = "${var.pool}"
   depends_on = ["openstack_networking_router_interface_v2.terraform"]
 }
+
+resource "openstack_compute_floatingip_associate_v2" "terraform" {
+  floating_ip = "${openstack_networking_floatingip_v2.terraform.address}"
+  instance_id = "${openstack_compute_instance_v2.front.id}"
+}
+
+resource "openstack_networking_floatingip_v2" "mqtt" {
+  pool       = "${var.pool}"
+  depends_on = ["openstack_networking_router_interface_v2.terraform"]
+}
+
+resource "openstack_compute_floatingip_associate_v2" "mqtt" {
+  floating_ip = "${openstack_networking_floatingip_v2.mqtt.address}"
+  instance_id = "${openstack_compute_instance_v2.thingsboard.id}"
+}
+
 
 
 resource "openstack_compute_secgroup_v2" "terraform" {
@@ -101,33 +117,33 @@ resource "openstack_compute_instance_v2" "front" {
   name = "front"
   image_id = "${var.openstack_ubuntu_image_id}"
   availability_zone = "nova"
-  flavor_name = "$(var.front-image-flavor)"
+  flavor_name = "${var.front-image-flavor}"
   key_pair = "${openstack_compute_keypair_v2.redbeard28_key_pub.name}"
   security_groups = ["terraform"]
   network {
     uuid = "${openstack_networking_network_v2.terraform.id}"
   }
-  floating_ip = "${openstack_compute_floatingip_v2.terraform.address}"
+  #floating_ip = "${openstack_compute_floatingip_associate_v2.terraform.address}"
 }
 
 resource "openstack_compute_instance_v2" "thingsboard" {
   name = "thingsboard"
   image_id = "${var.openstack_ubuntu_image_id}"
   availability_zone = "nova"
-  flavor_name = "$(var.thingsboard-image-flavor)"
+  flavor_name = "${var.thingsboard-image-flavor}"
   key_pair = "${openstack_compute_keypair_v2.redbeard28_key_pub.name}"
   security_groups = ["thingsboard"]
   network {
     uuid = "${openstack_networking_network_v2.terraform.id}"
   }
-  floating_ip = "${openstack_compute_floatingip_v2.terraform.address}"
+  #floating_ip = "${openstack_compute_floatingip_associate_v2.terraform.address}"
 }
 
 resource "openstack_compute_instance_v2" "nodered" {
   name = "nodered"
   image_id = "${var.openstack_ubuntu_image_id}"
   availability_zone = "nova"
-  flavor_name = "$(var.nodered-image-flavor)"
+  flavor_name = "${var.nodered-image-flavor}"
   key_pair = "${openstack_compute_keypair_v2.redbeard28_key_pub.name}"
   security_groups = ["terraform"]
   network {
@@ -138,8 +154,8 @@ resource "openstack_compute_instance_v2" "nodered" {
 resource "openstack_compute_instance_v2" "guacamole" {
   name = "guacamole"
   image_id = "${var.openstack_ubuntu_image_id}"
-  availability_zone = "nova"
-  flavor_name = "$(var.guacamole-image-flavor)"
+  #availability_zone = "nova"
+  flavor_name = "${var.guacamole-image-flavor}"
   key_pair = "${openstack_compute_keypair_v2.redbeard28_key_pub.name}"
   security_groups = ["terraform"]
   network {
