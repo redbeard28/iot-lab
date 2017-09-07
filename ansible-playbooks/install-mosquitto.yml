@@ -1,7 +1,5 @@
 ---
 - hosts: localhost
   become_method: sudo
-  vars_files:
-      - secrets/{{site}}-secrets.yml
   roles:
      - {role: mosquitto-ansible-role , tags: mosquitto-role }
