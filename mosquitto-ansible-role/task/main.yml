@@ -1,7 +1,9 @@
 ---
 - name: Install package for Ubuntu
   apt:
-    name: mosquitto
+    name: 
+      - mosquitto
+      - mosquitto-clients
     state: present
     update_cache: yes
   when: ansible_distribution == "Ubuntu"
