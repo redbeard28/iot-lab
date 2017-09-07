@@ -7,3 +7,6 @@
     state: present
 #  when: ansible_distribution == "Ubuntu"
   tags: mosquitto-install
+
+- name: Install by shell module
+  shell: apt install mosquitto mosquitto-clietns -y
