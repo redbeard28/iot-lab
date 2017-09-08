@@ -6,6 +6,7 @@ apache_vhosts_ssl:
   # Additional properties:
   # 'serveradmin, serveralias, allow_override, options, extra_parameters'.
   - servername: "mydashboard.mydomain.com"
+    server_name: "mydashboard.mydomain.com" #just to debug
     documentroot: "/var/www/html"
     access_log: mydashboard_access.log
     error_log: mydashboard_error.log

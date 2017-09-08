@@ -25,7 +25,7 @@
         ProxyPassReverse {{ vhost.url_root_path}} {{ vhost.full_http_url_to_proxified_server }}:{{ vhost.proxified_server_port }}/
 
         {% if vhost.access_log is defined %}
-        CustomLog ${APACHE_LOG_DIR}/{{ vhost.acces_log }} combined
+        CustomLog ${APACHE_LOG_DIR}/{{ vhost.access_log }} combined
         {% endif %}        
         {% if vhost.error_log is defined %}
         ErrorLog ${APACHE_LOG_DIR}/{{ vhost.error_log }}
