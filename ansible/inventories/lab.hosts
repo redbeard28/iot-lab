@@ -1,5 +1,5 @@
 [all]
-localhost
+localhost       ansible_connection=local
 
 [all:vars]
 site=lab

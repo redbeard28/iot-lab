@@ -1,0 +1,5 @@
+---
+- hosts: localhost
+  become_method: sudo
+  roles:
+     - {role: npm-ansible-role , tags: npm-role }

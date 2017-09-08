@@ -1,0 +1,4 @@
+---
+- include: apt_update.yml
+- include: ntp_install.yml
+- include: git_install.yml

@@ -1,0 +1,13 @@
+---
+- name: Install NTP
+  apt: package=ntp state=present update_cache=yes
+  tags: ntp
+
+- name: Copy over the NTP configuration
+  template: src=ntp.conf.j2 dest=/etc/ntp.conf
+  notify:
+    - restart ntp
+
+- name: ensure ntp is running
+  service: name=ntp state=started
+  tags: ntp

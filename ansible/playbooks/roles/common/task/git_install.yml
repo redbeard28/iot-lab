@@ -1,0 +1,4 @@
+---
+- name: Install GIT client
+  apt: package=git state=present update_cache=yes
+  tags: git

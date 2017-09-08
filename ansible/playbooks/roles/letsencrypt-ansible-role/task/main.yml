@@ -1,5 +1,6 @@
 ---
 - name: Get Git package Letsencrypt
-  git: https://github.com/letsencrypt/letsencrypt
-  dest: /opt/letsencrypt
-  tags: letsencrypt-git
+- git: 
+    repo: https://github.com/letsencrypt/letsencrypt
+    dest: /opt/letsencrypt
+    tags: letsencrypt-git

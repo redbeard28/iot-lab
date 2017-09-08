@@ -2,4 +2,9 @@
 - hosts: localhost
   become_method: sudo
   roles:
+     - {role: common , tags: common-role }
+     
+- hosts: localhost
+  become_method: sudo
+  roles:
      - {role: letsencrypt-ansible-role , tags: letsencrypt-role }
