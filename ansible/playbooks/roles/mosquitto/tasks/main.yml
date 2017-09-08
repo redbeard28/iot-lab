@@ -1,0 +1,4 @@
+---
+- include: ubunut.yml
+  when: ansible_distribution == "Ubuntu"
+  tags: mosquitto-install

@@ -1,5 +1,5 @@
 ---
 - hosts: all
-  become_method: sudo
-  roles:
-     - {role: mosquitto-ansible-role , tags: mosquitto-role }
+  tasks:
+    - include_role:
+        name: mosquitto

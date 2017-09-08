@@ -1,0 +1,10 @@
+---
+- name: Install package for Ubuntu
+  apt:
+    name: 
+      - mosquitto
+      - mosquitto-clients
+    state: present
+
+#- name: Install by shell module
+#  shell: apt install mosquitto mosquitto-clietns -y
