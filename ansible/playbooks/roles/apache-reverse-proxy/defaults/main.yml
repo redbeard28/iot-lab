@@ -1,0 +1,22 @@
+---
+apache_create_vhosts: true
+apache_vhosts_filename: "vhosts.conf"
+apache_vhosts_template: "vhosts.conf.j2"
+apache_vhosts_ssl:
+  # Additional properties:
+  # 'serveradmin, serveralias, allow_override, options, extra_parameters'.
+  - servername: "mydashboard.mydomain.com"
+    documentroot: "/var/www/html"
+    access_log: mydashboard_access.log
+    error_log: mydashboard_error.log
+    url_root_path: /
+    full_http_url_to_proxified_server: http://localhost
+    proxified_server_port: 8080
+  #- servername: "myguacamole.mydomain.com"
+  #  documentroot: "/var/www/html"
+  #  access_log: myguacamole_access.log
+  #  error_log: myguacamole_error.log
+
+# On Debian/Ubuntu, a default virtualhost is included in Apache's configuration.
+# Set this to `true` to remove that default.
+apache_remove_default_vhost: true

@@ -1,5 +1,29 @@
+#########################################################
+#If you want all on the same server, please use :
+# ansible-playbook -i "localhost," -c localplaybook_name 
+#########################################################
 [all]
-localhost       ansible_connection=local
+192.168.10.10 host_name=front host_coments="front server with apache"
+192.168.10.20 host_name=dashboard host_comments="thingsboard server"
+192.168.10.30 host_name=nodered host_comments="node-red and mqtt server"
+192.168.10.40 host_name=guacamole host_comments="Remote access server"
 
 [all:vars]
 site=lab
+
+[npm_servers]
+dashboard
+nodered
+
+[front]
+192.168.10.10
+
+[dashboard]
+192.168.10.20
+
+[nodered]
+192.168.10.30
+
+[remote]
+192.168.10.40
+

@@ -1,5 +1,5 @@
 ---
-- hosts: all
+- hosts: npm_servers
   tasks:
     - include_role:
         name: npm

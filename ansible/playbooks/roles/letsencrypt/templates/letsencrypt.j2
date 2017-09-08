@@ -1,0 +1,3 @@
+{% for url in domaine_name %}
+/usr/local/sbin/le-renew {{ url }} >> /var/log/le-renew.log
+{% endfor %}

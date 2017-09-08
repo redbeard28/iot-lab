@@ -1,0 +1,41 @@
+{% for vhost in apache_vhosts_ssl %}
+<VirtualHost {{ vhosts.servername }}:443>
+        # The ServerName directive sets the request scheme, hostname and port that
+        # the server uses to identify itself. This is used when creating
+        # redirection URLs. In the context of virtual hosts, the ServerName
+        # specifies what hostname must appear in the request's Host: header to
+        # match this virtual host. For the default virtual host (this file) this
+        # value is not decisive as it is used as a last resort host regardless.
+        # However, you must set it for any further virtual host explicitly.
+        ServerName {{ server_name }}
+
+        DocumentRoot {{ vhost.documentroot }}
+
+        {% if vhost.serveradmin is defined %}
+        ServerAdmin {{ vhost.serveradmin }}
+        {% endif %}
+        SSLEngine On
+        # Set the path to SSL certificate
+        # Usage: SSLCertificateFile /path/to/cert.pem
+        SSLCertificateFile /etc/ssl/certs/ssl-cert-snakeoil.pem
+        SSLCertificateKeyFile /etc/ssl/private/ssl-cert-snakeoil.key
+
+        ProxyPreserveHost On
+        ProxyPass {{ vhost.url_root_path}} {{ vhost.full_http_url_to_proxified_server }}:{{ vhost.proxified_server_port }}/
+        ProxyPassReverse {{ vhost.url_root_path}} {{ vhost.full_http_url_to_proxified_server }}:{{ vhost.proxified_server_port }}/
+
+        {% if vhost.access_log is defined %}
+        CustomLog ${APACHE_LOG_DIR}/{{ vhost.acces_log }} combined
+        {% endif %}        
+        {% if vhost.error_log is defined %}
+        ErrorLog ${APACHE_LOG_DIR}/{{ vhost.error_log }}
+        {% endif %}
+
+        # For most configuration files from conf-available/, which are
+        # enabled or disabled at a global level, it is possible to
+        # include a line for only one particular virtual host. For example the
+        # following line enables the CGI configuration for this host only
+        # after it has been globally disabled with "a2disconf".
+        #Include conf-available/serve-cgi-bin.conf
+</VirtualHost>
+{% endfor %}

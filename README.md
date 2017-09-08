@@ -39,6 +39,10 @@ This server is used as a reverse proxy to https access to:
 SSH service is listenning on tcp port 8143
 
 
+Inspired from Jeff Geerling
+
+Author information ^[Apache [role](https://github.com/geerlingguy/ansible-role-apache) was created in 2014 by [Jeff Geerling](https://www.jeffgeerling.com/), author of [Ansible for DevOps](https://www.ansiblefordevops.com/).]
+
 ### ThingsBoard server
 This server act as dashboard service. 
 
@@ -70,3 +74,5 @@ This server act as dashboard service.
 
 # Licence
 Licence CC-BY-NC-SA
+
+

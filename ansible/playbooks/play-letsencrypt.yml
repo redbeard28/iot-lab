@@ -1,0 +1,5 @@
+---
+- hosts: front
+  tasks:
+    - include_role:
+        name: letsencrypt

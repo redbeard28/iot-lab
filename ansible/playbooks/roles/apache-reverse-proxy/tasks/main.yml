@@ -1,0 +1,12 @@
+---
+# Include variables and define needed variables.
+- name: Include OS-specific variables.
+  include_vars: "{{ ansible_distribution }}.yml"
+
+# Setup/install tasks.
+- include: "setup-{{ ansible_distribution }}.yml"
+  static: no
+
+# Configure Apache.
+- include: "configure-{{ ansible_distribution }}.yml"
+  static: no

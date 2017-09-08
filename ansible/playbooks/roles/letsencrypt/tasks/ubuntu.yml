@@ -1,6 +1,15 @@
 ---
 - name: Get Git package Letsencrypt
-- git: 
+ git: 
     repo: https://github.com/letsencrypt/letsencrypt
     dest: /opt/letsencrypt
 
+- name: Copy over the NTP configuration
+  template: 
+    src: letsencrypt.j2
+    dest: /etc/cron.weekly/letsencrypt
+    owner: root
+    group: root
+    mode: 0755
+  notify:
+    - install certs
