@@ -1,5 +1,5 @@
 {% for vhost in apache_vhosts_ssl %}
-<VirtualHost {{ vhosts.servername }}:443>
+<VirtualHost {{ vhost.servername }}:443>
         # The ServerName directive sets the request scheme, hostname and port that
         # the server uses to identify itself. This is used when creating
         # redirection URLs. In the context of virtual hosts, the ServerName
