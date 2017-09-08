@@ -4,12 +4,29 @@
     repo: https://github.com/letsencrypt/letsencrypt
     dest: /opt/letsencrypt
 
-- name: Copy over the NTP configuration
+- name: Install prequisit renew script from Erika HEIDI work
+  apt:
+    name: bc
+    state: present
+
+- name: Install renew script from Erika HEIDI work
+  shell: <
+    curl -L -o /usr/local/sbin/le-renew http://do.co/le-renew
+    chmod +x /usr/local/sbin/le-renew
+    
+- name: Generate Letsencrypt certs files
+# do it with your hands (not implemented yet ;-) )
+#  notify:
+#    - generate_ok
+
+- name: Copy CRON weekly file
   template: 
     src: letsencrypt.j2
     dest: /etc/cron.weekly/letsencrypt
     owner: root
     group: root
     mode: 0755
+  with-items: {{ domain_name }}
+  #when: generate_ok
   notify:
     - install certs
