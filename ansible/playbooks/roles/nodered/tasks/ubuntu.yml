@@ -1,0 +1,8 @@
+---
+- name: Install node-red for ubuntu
+  npm:
+    name: node-red
+    production: yes
+    state: latest
+    
+

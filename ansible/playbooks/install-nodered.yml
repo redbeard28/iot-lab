@@ -1,4 +1,5 @@
 ---
 - include: play-common.yml
+- include: play-mosquitto.yml
 - include: play-npm.yml
 - include: play-nodered.yml
