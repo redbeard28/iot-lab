@@ -1,10 +1,19 @@
 ---
-- name: Create user nodered
-  user:
-    name: nodered
-    shell: /bin/bash
-    groups: sudo
+- name: Make sure we have a 'wheel' group
+  group:
+    name: wheel
+    state: present
 
+- name: Allow 'wheel' group to have passwordless sudo
+  lineinfile:
+    dest: /etc/sudoers
+    state: present
+    regexp: '^%wheel'
+    line: '%wheel ALL=(ALL) NOPASSWD: ALL'
+
+- name: Add sudoers users to wheel group
+  user: name=nodered groups=wheel append=yes state=present createhome=yes
+  
 - name: Install node-red for ubuntu
   shell: >
     npm install -g --unsafe-perm node-red
