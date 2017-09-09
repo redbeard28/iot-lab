@@ -1,8 +1,27 @@
 ---
+- name: Create user nodered
+  user:
+    name: nodered
+    shell: /bin/bash
+    groups: sudo
+
 - name: Install node-red for ubuntu
-  npm:
-    name: node-red
-    production: yes
-    state: latest
+  shell: >
+    npm install -g --unsafe-perm node-red
+  become: yes
+  become_user: nodered
+
+- name: Install TheThingsNetwork Flow
+  shell: <
+    cd $HOME/.node-red
+    npm install node-red-contrib-ttn
+  become_user: nodered
+
+
+#
+#  npm:
+#    name: node-red
+#    production: yes
+#    state: latest
     
 
