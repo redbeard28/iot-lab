@@ -1,0 +1,28 @@
+---
+- include: play-common.yml
+  extras-vars:
+    - hosts: all
+  tags: common
+- include: play-front.yml
+  extras-vars:
+    - hosts: all
+  tags: front
+- include: play-mosquitto.yml
+  extras-vars:
+    - hosts: all
+  tags: mosquitto
+- include: play-npm.yml
+  extras-vars:
+    - hosts: all
+  tags: npm
+- include: play-nodered.yml
+  extras-vars:
+    - hosts: all
+  tags: nodered
+- include: play-guacamole.yml
+  extras-vars:
+    - hosts: all
+- include: play-dashboard.yml
+  extras-vars:
+    - hosts: all
+  tags: dashboard
