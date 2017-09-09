@@ -6,7 +6,7 @@
     owner: root
     group: root
     mode: 0644
-  notify: restart apache
+  notify: apache2 restart
   when: apache_create_vhosts
 
 - name: Add vhost symlink in sites-enabled.
@@ -14,12 +14,12 @@
     src: "{{ apache_conf_path }}/sites-available/{{ apache_vhosts_filename }}"
     dest: "{{ apache_conf_path }}/sites-enabled/{{ apache_vhosts_filename }}"
     state: link
-  notify: restart apache
+  notify: apache2 restart
   when: apache_create_vhosts
 
 - name: Remove default vhost in sites-enabled.
   file:
     path: "{{ apache_conf_path }}/sites-enabled/{{ apache_default_vhost_filename }}"
     state: absent
-  notify: restart apache
+  notify: apache2 restart
   when: apache_remove_default_vhost
