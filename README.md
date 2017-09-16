@@ -1,6 +1,7 @@
 # IoT-Lab
 
 ## What's that?
+[At first]
 In order to deliver a quality training, I automate the implementation of a lab allowing the implementation of an open-source IoT infrastructure.
 It includes tools like:
     
@@ -12,6 +13,10 @@ It includes tools like:
     . Guacamole
     . NoSQL base like elasticsearch / cassandra
 
+[Today] this purpose goes on another level.
+
+Please go to [sakura project](https://github.com/redbeard28/sakura-project).
+
 ## What do we need?
 We need the following prerequisites:
     
@@ -22,9 +27,8 @@ We need the following prerequisites:
 ## Folders description
 Little folder description:
 
-/ansible => all about ansible deployment
-
-/terraform => all about terraform deployment
+    /ansible => all about ansible deployment
+    /terraform => all about terraform deployment
 
 you have a symlink from /terraform/ansible to /ansible
 
@@ -41,7 +45,6 @@ SSH service is listenning on tcp port 8143
 
 Inspired from Jeff Geerling
 
-Author information ^[Apache [role](https://github.com/geerlingguy/ansible-role-apache) was created in 2014 by [Jeff Geerling](https://www.jeffgeerling.com/), author of [Ansible for DevOps](https://www.ansiblefordevops.com/).]
 
 ### ThingsBoard server
 This server act as dashboard service. 
@@ -71,6 +74,7 @@ This server act as dashboard service.
     * ansible install all needs on node-red, thingsboard and NoSQL servers
     * ansible install let's encrypt, apache2 and reverse conf. We need servers up and running to respond let's encrypt request...
 
+[Apache role](https://github.com/geerlingguy/ansible-role-apache) was created in 2014 by [Jeff Geerling](https://www.jeffgeerling.com/), author of [Ansible for DevOps](https://www.ansiblefordevops.com/).
 
 # Licence
 Licence CC-BY-NC-SA

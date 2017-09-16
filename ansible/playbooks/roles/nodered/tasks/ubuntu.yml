@@ -11,6 +11,9 @@
     regexp: '^%wheel'
     line: '%wheel ALL=(ALL) NOPASSWD: ALL'
 
+- name: Install nodejs.legacy
+  apt: package=nodejs-legacy state=present update_cache=yes
+  
 - name: Add sudoers users to wheel group
   user: name=nodered groups=wheel append=yes state=present createhome=yes
   
