@@ -16,17 +16,29 @@
   
 - name: Add sudoers users to wheel group
   user: name=nodered groups=wheel append=yes state=present createhome=yes
-  
+
 - name: Install node-red for ubuntu
   become_user: nodered
   shell: >
     sudo npm install -g node-red
+  notify: nodered installed
 
+- name: Add systemctl service for node-red
+ template:
+    src: "node-red.service.j2
+    dest: "sudo nano /etc/systemd/system/node-red.service"
+    owner: root
+    group: root
+    mode: 0644
+  notify: nodered restart
+  when: nodered installed
+  
 - name: Install TheThingsNetwork Flow
-  shell: <
-    cd $HOME/.node-red
-    npm install node-red-contrib-ttn
   become_user: nodered
+  shell: <
+    cd /home/{{ nodeuser }}/.node-red
+    sudo npm install node-red-contrib-ttn
+  
 
 
 #

@@ -1,3 +1,6 @@
 ---
-
+nodeuser: nodered
+nodegrpuser: nodered
+desciption-service: Node-RED
+mem-old: 256
 # defaults file for npm-ansible-role

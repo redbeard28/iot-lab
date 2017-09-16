@@ -1,2 +1,4 @@
 ---
+- name: nodred restart
+  service: name=node-red.service state=restarted
 # handlers file for npm-ansible-role

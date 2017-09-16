@@ -1,0 +1,20 @@
+[Unit]
+Description={{ description-service }}
+After=syslog.target network.target
+
+[Service]
+ExecStart=/usr/local/bin/node-red --max-old-space-size={{ mem-old }} -v
+Restart=on-failure
+KillSignal=SIGINT
+
+# log output to syslog as 'node-red'
+SyslogIdentifier=node-red
+StandardOutput=syslog
+
+# non-root user to run as
+WorkingDirectory=/home/{{ nodeuser }}/
+User={{ nodeuser }}
+Group={{ nodegrpuser }}
+
+[Install]
+WantedBy=multi-user.target
