@@ -18,10 +18,9 @@
   user: name=nodered groups=wheel append=yes state=present createhome=yes
   
 - name: Install node-red for ubuntu
-  shell: >
-    npm install -g --unsafe-perm node-red
-  become: yes
   become_user: nodered
+  shell: >
+    sudo npm install -g node-red
 
 - name: Install TheThingsNetwork Flow
   shell: <
