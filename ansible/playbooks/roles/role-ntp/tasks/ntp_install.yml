@@ -2,12 +2,9 @@
 - name: Install NTP Ubuntu like
   apt: package=ntp state=present update_cache=yes
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
-  tags: ntp
 
 - name: Install NTP EL like
-  yum: name=$item state=latest
-  with_items:
-   - ntp
+  yum: name=ntp state=latest
   when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
 
 - name: Copy over the NTP configuration
@@ -17,4 +14,8 @@
 
 - name: ensure ntp is running
   service: name=ntp state=started
-  tags: ntp
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+
+- name: ensure ntp is running
+  service: name=ntpd state=started
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
