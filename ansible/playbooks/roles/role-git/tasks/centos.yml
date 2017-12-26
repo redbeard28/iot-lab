@@ -1,0 +1,3 @@
+---
+- name: Install Git client on CentOS or RHEL
+  yum: name=ntp state=latest
