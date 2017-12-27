@@ -1,0 +1,6 @@
+- hosts: all
+  vars_files:
+      - secrets/lab-secrets.yml
+  tasks:
+    - include_role:
+        name: role-bind

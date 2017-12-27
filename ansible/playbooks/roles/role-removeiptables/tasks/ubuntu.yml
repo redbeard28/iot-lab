@@ -1,0 +1,5 @@
+---
+- name: Disable iptables ufw for Ubuntu
+  shell: |
+    ufw disable && ufw status
+

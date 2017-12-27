@@ -1,3 +1,3 @@
 ---
-- name: Install Git client on CentOS or RHEL
-  yum: name=ntp state=latest
+- name: Install GIT client on CentOS or RHEL
+  yum: name=git state=latest

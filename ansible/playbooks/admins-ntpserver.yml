@@ -1,0 +1,7 @@
+---
+- hosts: admins
+  vars_files:
+      - secrets/{{ site }}-secrets.yml
+  tasks:
+    - include_role:
+        name: role-ntp

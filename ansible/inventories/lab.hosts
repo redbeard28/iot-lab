@@ -3,27 +3,45 @@
 # ansible-playbook -i "localhost," -c localplaybook_name 
 #########################################################
 [all]
-192.168.10.10 host_name=front host_coments="front server with apache"
-192.168.10.20 host_name=dashboard host_comments="thingsboard server"
-192.168.10.30 host_name=nodered host_comments="node-red and mqtt server"
-192.168.10.40 host_name=guacamole host_comments="Remote access server"
+admin.redbeard28.intra host_ip=10.10.1.15 private_hostname=admin host_coments="Admin Bastion and Bind NTP server"
+master.redbeard28.intra host_ip=10.10.1.92 private_hostname=master host_coments="Openshift Master"
+node1.redbeard28.intra host_ip=10.10.1.93 private_hostname=node1 host_coments="Openshift Node1"
+node2.redbeard28.intra host_ip=10.10.1.95 private_hostname=node2 host_coments="Openshift Node2"
 
 [all:vars]
 site=lab
 
-[npm_servers]
-dashboard
-nodered
+[lab:children]
+nodes
+masters
+admins
+bindserver
+ntpserver
 
-[front]
-192.168.10.10
+#[npm_servers]
+#dashboard
+#nodered
 
-[dashboard]
-192.168.10.20
+[nodes]
+node1.redbeard28.intra
+node2.redbeard28.intra
 
-[nodered]
-192.168.10.30
+[masters]
+master.redbeard28.intra
 
-[remote]
-192.168.10.40
+[admins]
+admin.redbeard28.intra
+
+[bindserver]
+admin.redbeard28.intra
+
+[ntpserver]
+admin.redbeard28.intra
+
+#[front]
+
+#[dashboard]
+
+#[nodered]
+
 
