@@ -1,0 +1,7 @@
+---
+- include: admins-removeiptables.yml
+- include: admins-selinux.yml
+- include: admins-ntpserver.yml
+- include: admins-git.yml
+- include: admins-bindserver.yml
+

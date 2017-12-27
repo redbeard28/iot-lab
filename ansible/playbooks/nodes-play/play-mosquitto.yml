@@ -1,0 +1,5 @@
+---
+- hosts: nodered
+  tasks:
+    - include_role:
+        name: mosquitto

@@ -1,9 +1,5 @@
 ---
-- name: restart ntp
-  service: name=ntp state=restarted
+- include: ubuntu.yml
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
-
-- name: restart ntp
-  service: name=ntpd state=restarted
+- include: centos.yml
   when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
-

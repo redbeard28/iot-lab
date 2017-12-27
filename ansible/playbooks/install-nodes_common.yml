@@ -1,0 +1,7 @@
+---
+#- include: nodes-removeiptables.yml
+- include: nodes-selinux.yml
+- include: nodes-dnsclient.yml
+- include: nodes-ntp.yml
+- include: nodes-git.yml
+

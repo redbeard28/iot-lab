@@ -1,0 +1,7 @@
+---
+- include: masters-removeiptables.yml
+- include: masters-selinux.yml
+- include: masters-dnsclient.yml
+- include: masters-ntp.yml
+- include: masters-git.yml
+

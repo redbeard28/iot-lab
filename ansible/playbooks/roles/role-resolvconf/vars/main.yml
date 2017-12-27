@@ -1,0 +1,6 @@
+---
+resolv_nameserver:
+  - 10.10.1.15
+  - 8.8.8.8
+resolv_search: "redbeard28.intra"
+

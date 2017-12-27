@@ -1,0 +1,3 @@
+---
+- include: play-common.yml
+- include: play-guacamole.yml
