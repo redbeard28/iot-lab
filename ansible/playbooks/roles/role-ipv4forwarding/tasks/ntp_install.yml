@@ -1,0 +1,30 @@
+---
+- name: Install NTP Ubuntu like
+  apt: package=ntp state=present update_cache=yes
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+
+- name: Install ntpdate Ubuntu like
+  apt: package=ntpdate state=present update_cache=yes
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+
+- name: Install NTP EL like
+  yum: name=ntp state=latest
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+
+- name: Install ntpdate EL like
+  yum: name=ntpdate state=latest
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+
+- name: Copy over the NTP configuration
+  template: src=ntp.conf.j2 dest=/etc/ntp.conf
+  notify:
+    - restart ntp
+
+- name: ensure ntp is running
+  service: name=ntp state=started
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+
+- name: ensure ntp is running
+  service: name=ntpd state=started
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+

@@ -1,0 +1,9 @@
+---
+# Set ip forwarding on in /proc and in the sysctl file and reload if necessary
+- name: Desactivation du forwarding ipv4
+  sysctl:
+    name: net.ipv4.ip_forward
+    value: 0
+    sysctl_set: yes
+    state: absent
+    reload: yes

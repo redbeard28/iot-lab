@@ -1,0 +1,6 @@
+---
+- include: ipv4_forwardON.yml
+  when: ipv4forward == 'true'
+
+- include: ipv4_forwardNO.yml
+  when: ipv4forward == 'false'

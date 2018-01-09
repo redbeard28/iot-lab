@@ -4,4 +4,4 @@
       - secrets/{{ site }}-secrets.yml
   tasks:
     - include_role:
-        name: role-removeiptables
+        name: role-iptables
