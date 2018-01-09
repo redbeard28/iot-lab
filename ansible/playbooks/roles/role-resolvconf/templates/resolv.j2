@@ -2,4 +2,4 @@
 {% for names in resolv_nameserver %}
 nameserver {{ names }}
 {% endfor %}
-search "{{ resolv_search }}"
+search {{ resolv_search }}
