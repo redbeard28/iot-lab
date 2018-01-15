@@ -4,7 +4,7 @@
 [At first]
 In order to deliver a quality training, I automate the implementation of a lab allowing the implementation of an open-source IoT infrastructure.
 It includes tools like:
-    
+
     . MQTT
     . node-red
     . thingsboard
@@ -19,10 +19,10 @@ Please go to [sakura project](https://github.com/redbeard28/sakura-project).
 
 ## What do we need?
 We need the following prerequisites:
-    
+
     . OpenStack environment with credentials
     . Terraform
-    . ansible
+    . **ansible**
 
 ## Folders description
 Little folder description:
@@ -36,7 +36,7 @@ you have a symlink from /terraform/ansible to /ansible
 
 ### Front apache2
 This server is used as a reverse proxy to https access to:
-    
+
     . thingsboard
     . guacamole
 
@@ -47,7 +47,7 @@ Inspired from Jeff Geerling
 
 
 ### ThingsBoard server
-This server act as dashboard service. 
+This server act as dashboard service.
 
     . MQTT secured server
     . https dashboard access
@@ -56,13 +56,13 @@ This server act as dashboard service.
 ### Node-Red server
 
     . MQTT publisher and listenner
-    
+
 ### Guacamole server
 
     . https HTML5 remote access
     . ssh acces for private lan server
     . Web secured access for node-red (access denied for direct access)
-    
+
 ## How it deploy?
 
     * Terraform deploy the router, the network
@@ -78,5 +78,3 @@ This server act as dashboard service.
 
 # Licence
 Licence CC-BY-NC-SA
-
-

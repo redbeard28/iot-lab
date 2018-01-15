@@ -1,10 +1,10 @@
 ---
 - hosts: all
   roles:
-    - { role: common , tags: ["common"] }
-    - { role: apache-reverse-proxy , tags: ["front"] }
-    #- { role: letsencrypt , tags: ["ssl-cert"] }
-    - { role: mosquitto, tags: ["mosquitto"] }
+#    - { role: common , tags: ["common"] }
+#    - { role: apache-reverse-proxy , tags: ["front"] }
+#    - { role: letsencrypt , tags: ["ssl-cert"] }
+#    - { role: mosquitto, tags: ["mosquitto"] }
     - { role: npm, tags: ["npm"] }
     - { role: nodered, tags: ["nodered"] }
-    #- { role: thingsboard , tags: ["dashboard"] }
+#    - { role: thingsboard , tags: ["dashboard"] }

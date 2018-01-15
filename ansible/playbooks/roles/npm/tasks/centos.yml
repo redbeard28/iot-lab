@@ -1,0 +1,12 @@
+---
+- name: Install repo nodejs from Web
+  shell: |
+    curl --silent --location https://rpm.nodesource.com/setup_8.x | sudo bash -
+
+- name: Install nodejs
+  yum: name=nodejs state=latest
+
+- name: Install node-red from npm
+  shell: |
+    npm install -g --unsafe-perm node-red
+  when: npm_install == "true"
