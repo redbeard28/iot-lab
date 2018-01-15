@@ -1,0 +1,4 @@
+---
+- name: Install python36u on Ubuntu
+  apt: package=python36u state=present update_cache=yes
+

@@ -1,0 +1,6 @@
+---
+- hosts: admins
+  vars_files:
+      - secrets/{{ site }}-secrets.yml
+  roles:
+    - {role: role-python36u, tags: [install-python36]}

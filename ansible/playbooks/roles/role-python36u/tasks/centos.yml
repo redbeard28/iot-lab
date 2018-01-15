@@ -1,0 +1,21 @@
+---
+- name: Install yum-utils on CentOS or RHEL
+  yum: name=yum-utils state=latest
+
+- name: Install @development on CentOS or RHEL
+  yum: name=@development state=latest
+
+- name: Install repo ius from Web
+  yum:
+    name: https://centos7.iuscommunity.org/ius-release.rpm
+    state: present
+
+- name: Install python36u on CentOS or RHEL
+  yum: name=python36u state=latest
+
+- name: Install python36u-pip on CentOS or RHEL
+  yum: name=python36u-pip state=latest
+
+- name: Install jinja2 on Centos or RHEL
+  shell: |
+    pip3.6 install --upgrade Jinja2

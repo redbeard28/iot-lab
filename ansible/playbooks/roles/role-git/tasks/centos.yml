@@ -1,3 +1,15 @@
 ---
 - name: Install GIT client on CentOS or RHEL
   yum: name=git state=latest
+
+- name: Install wget on Centos or RHEL
+  yum: name=wget state=latest
+
+- name: Install curl on Centos or RHEL
+  yum: name=curl state=latest
+
+- name: Install net-tools on Centos or RHEL
+  yum: name=net-tools state=latest
+
+- name: Install jq XML parser on Centos or RHEL
+  yum: name=jq state=latest

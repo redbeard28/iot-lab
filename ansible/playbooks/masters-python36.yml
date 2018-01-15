@@ -2,6 +2,5 @@
 - hosts: masters
   vars_files:
       - secrets/{{ site }}-secrets.yml
-  tasks:
-    - include_role:
-        name: role-git
+  roles:
+    - {role: role-python36u, tags: [install-python36]}
